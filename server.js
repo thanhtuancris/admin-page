@@ -71,7 +71,7 @@ app.post('/add', (req, res) => {
             }); 
         }else{
             //save MongoDB
-            const truyentranh = TruyenTranh({
+            const truyentranh = new TruyenTranh({
                 name: req.body.ten,
                 image: req.file.filename,
                 date_pub: req.body.ngayxb
@@ -91,6 +91,21 @@ app.post('/add', (req, res) => {
             });
         }
 
+    });
+});
+
+
+//Danh sach
+app.get('/list', function(req, res){
+    TruyenTranh.find(function(err, data){
+        if(err){
+            res.json({
+                status: "error",
+                message: "error"
+            }); 
+        }else{
+            res.render('list', {danhsach: data});
+        }
     });
 });
 

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LIST</title>
+    <style>
+
+       
+        .charactor a:hover{
+            background-color: blue;
+        }    
+        .charactor a{
+            display: block;
+            width: 50%;
+            float: left;
+            background-color: black;
+            color: yellow;
+            margin-bottom: 40px;
+            text-decoration: none;
+        }
+
+        #listTruyenTranh{
+            text-align: center;
+        }
+        .charactor img{
+            border-radius: 60%;
+            width: 50%;
+            height: 50%;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="listTruyenTranh">
+        <a href="./add">ADD new</a>
+
+        <% danhsach.forEach(function(truyentranh){ %>
+            <div class="charactor">
+                <img src="./upload/<%-truyentranh.image %>"  alt="">
+                <div class="tenTruyen"><%-truyentranh.name %></div>
+                <div class="ngayxbTruyen"><%-truyentranh.date_pub %></div>
+                <div class="button">
+                    <a href="./edit/<%- truyentranh._id %> "> EDIT</a>
+                    <a href="./delete/<%- truyentranh._id %>">DELETE</a>  
+                </div>
+            </div>
+       <% }); %>
+
+
+    </div>
+
+</body>
+</html>
