@@ -83,10 +83,7 @@ app.post('/add', (req, res) => {
                         message: "error"
                     }); 
                 }else{
-                    res.json({
-                        status: "success",
-                        message: "success"
-                    }); 
+                   res.redirect('./list');
                 }
             });
         }
