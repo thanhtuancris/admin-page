@@ -107,6 +107,20 @@ app.get('/list', function(req, res){
 });
 
 
+//Edit
+app.get('/edit/:id', function(req, res){
+
+    //lay thong tin chi tiet cua :id
+
+
+    res.render('edit');
+});
+
+app.post('/edit', function(req, res){
+    res.send('abc');
+});
+
+
 
 app.listen(port, () => {
     console.log('Server listening on port ' + port);
