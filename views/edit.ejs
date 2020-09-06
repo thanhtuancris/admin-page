@@ -1,21 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <base href="https://localhost:3000">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EDIT</title>
     <style>
-
+        input{margin: 10px;}
     </style>
 </head>
 <body>
     <h2>Edit truyen tranh</h2>
-    <form action="./edit" method="POST" enctype="multipart/form-data">
-        <input type="text" name="ten" placeholder="Name"> <br>
+    <form action="../edit" method="POST" enctype="multipart/form-data">
+        <input type="hidden" name="idDanhSach" value="<%- danhsach._id%>">
+        <input type="text" name="ten" placeholder="Name" value="<%- danhsach.name%>"> <br>
+        <img src="../upload/<%- danhsach.image%>" width="100">
         <input type="file" name="anhTruyenTranh"> <br>
-        <input type="text" name="ngayxb" placeholder="Ngay xuat ban">   
-        <input type="submit" value="Edit">
+        <input type="text" name="ngayxb" placeholder="Ngay xuat ban" value="<%- danhsach.date_pub%>">   
+        <input type="submit" value="Save">
     </form>
 </body>
 </html>
