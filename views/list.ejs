@@ -28,9 +28,24 @@
             width: 20%;
             height: 20%;
         }
-
+        .mau{border: solid 5px green;}
     </style>
+
+    <script src="./jquery.js"></script>
+    <script>
+        $(document).ready(function(){
+            $(".charactor:odd").css("background-color", "yellow");
+            $(".charactor:even").css("background-color", "pink");
+            $(".charactor").mouseover(function(){
+                $(this).addClass("mau");
+            });
+            $(".charactor:even").mouseout(function(){
+                $(this).removeClass("mau");
+            });
+        });
+    </script>
 </head>
+
 <body>
     <div id="listTruyenTranh">
         <a href="./add">ADD new</a>
@@ -42,7 +57,7 @@
                 <div class="ngayxbTruyen"><%-truyentranh.date_pub %></div>
                 <div class="button">
                     <a href="./edit/<%- truyentranh._id %> "> EDIT</a>
-                    <a href="./delete/<%- truyentranh._id %>">DELETE</a>  
+                    <a onclick="return confirm('Are you sure you want to delete?')" href="./delete/<%- truyentranh._id %>">DELETE</a>  
                 </div>
             </div>
        <% }); %>

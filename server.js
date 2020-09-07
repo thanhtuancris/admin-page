@@ -35,7 +35,7 @@ const storage = multer.diskStorage({
 const upload = multer({ 
     storage: storage,
     fileFilter: function (req, file, cb) {
-        console.log(file);
+        // console.log(file);
         if(file.mimetype=="image/bmp" || file.mimetype=="image/png" || file.mimetype=="image/jpg" || file.mimetype=="image/jpeg" || file.mimetype=="image/gif"){
             cb(null, true)
         }else{
@@ -108,19 +108,89 @@ app.get('/list', function(req, res){
 
 
 //Edit
+//lay thong tin chi tiet cua :id
 app.get('/edit/:id', function(req, res){
-
-    //lay thong tin chi tiet cua :id
-
-
-    res.render('edit');
+    TruyenTranh.findById(req.params.id, function(err, data){
+        if(err){
+            res.json({
+                status: "error",
+                message: "error"
+            }); 
+        }else{
+            // console.log(data);
+            res.render('edit', {danhsach: data});
+        }
+    });
+     
 });
 
 app.post('/edit', function(req, res){
-    res.send('abc');
+    //xu ly upload file (check khach hang co chon file moi khong)
+
+   
+    upload(req, res, function (err) {
+
+         // Khong Co chon file moi
+        if(!req.file){
+            TruyenTranh.updateOne({_id: req.body.idDanhSach}, {
+                name: req.body.ten,
+                date_pub: req.body.ngayxb
+            },function(err){
+                if(err){
+                    res.json({
+                        status: "error",
+                        message: "error"
+                    });
+                }else{
+                    res.redirect('./list');
+                }
+            }); 
+        }else{
+
+            // Co chon file moi
+        if (err instanceof multer.MulterError) {
+            res.json({
+                status: "error",
+                message: "error"
+            }); 
+          } else if (err) {
+              res.json({
+                  status: "error",
+                  message: "error"
+              }); 
+          }else{
+              TruyenTranh.updateOne({_id: req.body.idDanhSach}, {
+                  name: req.body.ten,
+                  image: req.file.filename,
+                  date_pub: req.body.ngayxb
+              },function(err){
+                  if(err){
+                      res.json({
+                          status: "error",
+                          message: "error"
+                      });
+                  }else{
+                      res.redirect('./list');
+                  }
+              }); 
+            }
+        }
+    });
 });
 
 
+app.get('/delete/:id', function(req, res){
+    TruyenTranh.deleteOne({_id:req.params.id}, function(err){
+        if(err){
+            res.json({
+                status: "error",
+                message: "error"
+            });
+        }else{
+            res.redirect('../list');
+        }
+    });
+});
 
 app.listen(port, () => {
     console.log('Server listening on port ' + port);
