@@ -1,22 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<<<<<<< HEAD
     <!-- <base href="https://localhost:3000"> -->
+=======
+>>>>>>> 477340dfe238306d0bb4d2f37ed7863f686fdfa2
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EDIT</title>
     <style>
-
+        input{margin: 10px;}
     </style>
 </head>
 <body>
     <h2>Edit truyen tranh</h2>
     <form action="../edit" method="POST" enctype="multipart/form-data">
         <input type="hidden" name="idDanhSach" value="<%- danhsach._id%>">
+<<<<<<< HEAD
         <input type="text" value="<%- danhsach.name %>" name="ten" placeholder="Name"> <br>
         <img src="../upload/<%- danhsach.image%>" width="100" alt="">
         <input type="file" name="anhTruyenTranh"> <br>
         <input type="text" value="<%- danhsach.date_pub %>" name="ngayxb" placeholder="Ngay xuat ban">   
+=======
+        <input type="text" name="ten" placeholder="Name" value="<%- danhsach.name%>"> <br>
+        <img src="../upload/<%- danhsach.image%>" width="100">
+        <input type="file" name="anhTruyenTranh"> <br>
+        <input type="text" name="ngayxb" placeholder="Ngay xuat ban" value="<%- danhsach.date_pub%>">   
+>>>>>>> 477340dfe238306d0bb4d2f37ed7863f686fdfa2
         <input type="submit" value="Save">
     </form>
 </body>
