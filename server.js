@@ -109,11 +109,6 @@ app.get('/list', function(req, res){
 
 
 //Edit
-//lay thong tin chi tiet cua :id
-app.get('/edit/:id', function(req, res){
-    TruyenTranh.findById(req.params.id, function(err, data){
-=======
-// Edit
 // lay thong tin chi tiet cua :id
 app.get('/edit/:id', function(req, res){
     // res.render('edit');
@@ -128,16 +123,11 @@ app.get('/edit/:id', function(req, res){
             res.render('edit', {danhsach: data});
         }
     });
-<<<<<<< HEAD
-     
 });
 
 app.post('/edit', function(req, res){
     //xu ly upload file (check khach hang co chon file moi khong)
-
-   
     upload(req, res, function (err) {
-
          // Khong Co chon file moi
         if(!req.file){
             TruyenTranh.updateOne({_id: req.body.idDanhSach}, {
