@@ -107,7 +107,7 @@ app.get('/list', function(req, res){
 });
 
 
-<<<<<<< HEAD
+
 //Edit
 //lay thong tin chi tiet cua :id
 app.get('/edit/:id', function(req, res){
@@ -118,7 +118,6 @@ app.get('/edit/:id', function(req, res){
 app.get('/edit/:id', function(req, res){
     // res.render('edit');
     TruyenTranh.findOne({_id: req.params.id}, function(err, data){
->>>>>>> 477340dfe238306d0bb4d2f37ed7863f686fdfa2
         if(err){
             res.json({
                 status: "error",
@@ -183,7 +182,6 @@ app.post('/edit', function(req, res){
                   }
               }); 
             }
-=======
 });
 
 app.post('/edit', function(req, res){
@@ -248,7 +246,6 @@ app.get('/delete/:id', function(req, res){
             }); 
         }else{
             res.redirect('../list');
->>>>>>> 477340dfe238306d0bb4d2f37ed7863f686fdfa2
         }
     });
 });
